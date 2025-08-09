@@ -33,13 +33,33 @@ export default function Home() {
             <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">IA em cada departamento</span>
           </div>
 
+          <div className="mb-4 inline-flex items-center gap-3">
+            <Image
+              src="/icone%20clickup.svg"
+              alt="ClickUp Bootcamp"
+              width={28}
+              height={28}
+              className="rounded"
+            />
+            <span className="text-base font-semibold text-white">ClickUp Bootcamp</span>
+          </div>
+          <div className="mb-6 h-px w-28 rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400" />
+
           <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-            Acabe com o caos da sua empresa nos próximos 15 dias usando processos, IA e automações.
+            Acabe com o caos da sua empresa nos próximos 15 dias usando{" "}
+            <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
+              processos, IA e automações
+            </span>
+            .
           </h1>
           <p className="mt-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/80">De R$297 por apenas R$47</p>
 
           <p className="mt-5 max-w-2xl text-pretty text-lg text-white/80">
-            12 encontros no meet para você implementar a metodologia que organizou mais de 300 empresas e transforme sua operação em uma máquina previsível, produtiva e escalável.
+            12 encontros no meet para você{" "}
+            <span className="font-semibold underline underline-offset-2">
+              implementar a metodologia que organizou mais de 300 empresas
+            </span>{" "}
+            e transforme sua operação em uma máquina previsível, produtiva e escalável.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">

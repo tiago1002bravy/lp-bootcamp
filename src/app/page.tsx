@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import CheckoutModal from "@/components/CheckoutModal";
+import CountdownBar from "@/components/CountdownBar";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,6 +22,7 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full">
       <CheckoutModal isOpen={isModalOpen} onClose={closeCheckout} checkoutUrl={checkoutUrl} planLabel={planLabel} />
+      <CountdownBar />
       {/* HERO */}
       <section className="relative overflow-hidden bg-grid">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(1200px_500px_at_50%_-10%,rgba(255,75,209,.18),transparent_60%),radial-gradient(900px_480px_at_10%_20%,rgba(122,92,255,.22),transparent_60%),radial-gradient(900px_480px_at_90%_25%,rgba(43,217,255,.18),transparent_60%)]" />
@@ -37,7 +39,7 @@ export default function Home() {
           <p className="mt-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/80">De R$297 por apenas R$47</p>
 
           <p className="mt-5 max-w-2xl text-pretty text-lg text-white/80">
-            Implemente a metodologia que organizou mais de 300 empresas e transforme sua operação em uma máquina previsível, produtiva e escalável.
+            12 encontros no meet para você implementar a metodologia que organizou mais de 300 empresas e transforme sua operação em uma máquina previsível, produtiva e escalável.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -100,7 +102,8 @@ export default function Home() {
 
       {/* O QUE VOCÊ RECEBE */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-        <h2 className="text-2xl font-semibold md:text-3xl">O que você recebe</h2>
+        <h2 className="text-2xl font-semibold md:text-3xl">12 encontros 100% práticos</h2>
+        <p className="mt-2 text-white/70">para mapear, implementar e automatizar seus processos com IA</p>
         <div className="mt-10 space-y-12">
           {/* Bloco 1 */}
           <div className="grid items-center gap-8 md:grid-cols-2">
@@ -236,6 +239,34 @@ export default function Home() {
           <div className="card-glass rounded-2xl p-6">
             <h3 className="font-medium">E se eu perder uma aula?</h3>
             <p className="text-white/80">Plano VIP tem gravações. Outros acompanham pelo grupo.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTATO WHATSAPP */}
+      <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+        <div className="card-glass rounded-2xl p-8 text-center">
+          <h2 className="text-2xl font-semibold md:text-3xl mb-2">Ainda com dúvidas?</h2>
+          <p className="text-white/80 mb-6">Converse com nossa equipe no WhatsApp</p>
+          <div className="flex justify-center">
+            <a
+              href="https://wa.me/5524998620573?text=Quero%20falar%20sobre%20o%20bootcamp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-emerald-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                className="h-5 w-5"
+                aria-hidden="true"
+                fill="currentColor"
+              >
+                <path d="M19.11 17.53c-.28-.14-1.65-.81-1.9-.9-.26-.1-.45-.14-.64.14-.19.28-.73.9-.9 1.08-.17.19-.35.21-.64.07-.28-.14-1.19-.44-2.26-1.41-.84-.75-1.41-1.67-1.58-1.95-.16-.28-.02-.43.12-.57.12-.12.28-.31.42-.47.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.64-1.54-.88-2.1-.23-.56-.47-.48-.64-.49-.16-.01-.35-.01-.54-.01-.19 0-.49.07-.75.35-.26.28-1 1-1 2.43s1.02 2.82 1.16 3.01c.14.19 2 3.05 4.84 4.28.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.65-.67 1.88-1.31.23-.65.23-1.2.16-1.31-.07-.12-.26-.19-.54-.33z"/>
+                <path d="M16 3C9.37 3 4 8.37 4 15c0 2.11.55 4.08 1.52 5.8L4 29l8.36-1.49C14.18 27.46 15.07 27.5 16 27.5 22.63 27.5 28 22.13 28 15.5 28 8.87 22.63 3.5 16 3.5zm0 22c-.77 0-1.52-.1-2.23-.29l-.7-.18-4.96.88.9-4.84-.22-.74C8.27 18.55 8 17.04 8 15.5 8 10.26 11.76 6.5 16.5 6.5S25 10.26 25 15.5 21.74 25 16 25z"/>
+              </svg>
+              <span>Falar no WhatsApp</span>
+            </a>
           </div>
         </div>
       </section>

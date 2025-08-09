@@ -46,7 +46,7 @@ export default function Home() {
           <div className="mb-6 h-px w-28 rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400" />
 
           <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-            Acabe com o caos da sua empresa nos próximos 15 dias usando{" "}
+            Acabe com o caos da sua empresa nos próximos 12 dias usando{" "}
             <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
               processos, IA e automações
             </span>

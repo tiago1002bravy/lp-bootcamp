@@ -62,7 +62,7 @@ function TimeBox({ value, label }: { value: number; label: string }) {
   const display = String(value).padStart(2, "0");
   return (
     <div className="min-w-[44px] text-center">
-      <div className="text-2xl font-bold md:text-4xl">{display}</div>
+      <div className="text-2xl font-bold md:text-4xl" suppressHydrationWarning>{display}</div>
       <div className="text-[10px] text-white/90 md:text-sm">{label}</div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type CheckoutModalProps = {
   isOpen: boolean;
@@ -15,8 +15,32 @@ export default function CheckoutModal({ isOpen, onClose, checkoutUrl, planLabel 
   const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [utms, setUtms] = useState<Record<string, string>>({});
 
   if (!isOpen) return null;
+
+  useEffect(() => {
+    try {
+      const url = new URL(window.location.href);
+      const keys = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+        "gclid",
+        "fbclid",
+      ];
+      const collected: Record<string, string> = {};
+      for (const key of keys) {
+        const value = url.searchParams.get(key);
+        if (value) collected[key] = value;
+      }
+      setUtms(collected);
+    } catch (_) {
+      // ignore
+    }
+  }, []);
 
   function validate(): string | null {
     if (!fullName.trim()) return "Informe seu nome";
@@ -37,14 +61,14 @@ export default function CheckoutModal({ isOpen, onClose, checkoutUrl, planLabel 
 
     try {
       // Opcional: armazenar em localStorage para uso futuro
-      const payload = { fullName, email, phone, planLabel, ts: Date.now() };
+      const payload = { fullName, email, phone, planLabel, utms, ts: Date.now() };
       localStorage.setItem("lpBootcampLead", JSON.stringify(payload));
       // Dispara webhook server-side
       try {
         await fetch("/api/webhook", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ fullName, email, phone, planLabel, from: "lp-bootcamp" }),
+          body: JSON.stringify({ fullName, email, phone, planLabel, utms, from: "lp-bootcamp" }),
           cache: "no-store",
         });
       } catch (_) {

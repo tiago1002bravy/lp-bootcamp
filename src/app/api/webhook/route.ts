@@ -33,14 +33,14 @@ export async function POST(req: Request) {
         query: {},
         body: {
           id: Date.now(),
-          from: input.from || "lp-bootcamp",
+          from: input.from || "bootcamp-indefinido",
           created: now.toISOString(),
           content: {
             email: input.email,
             name: input.fullName,
             whatsapp: input.phone,
             utms: input.utms || {},
-            from: input.from || "lp-bootcamp",
+            from: input.from || "bootcamp-indefinido",
           },
           name: input.fullName,
           telefone: input.phone,

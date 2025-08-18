@@ -72,7 +72,7 @@ export default function CheckoutModal({ isOpen, onClose, checkoutUrl, planLabel 
         if (base.includes("vip")) return "vip";
         return base.replace(/[^a-z0-9]+/g, "-");
       })();
-      const from = `lp-bootcamp-${planSlug}`;
+      const from = `bootcamp-${planSlug}`;
       // Opcional: armazenar em localStorage para uso futuro
       const payload = { fullName, email, phone, planLabel, utms, from, ts: Date.now() };
       localStorage.setItem("lpBootcampLead", JSON.stringify(payload));

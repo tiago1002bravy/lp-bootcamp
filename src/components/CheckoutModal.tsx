@@ -39,6 +39,17 @@ export default function CheckoutModal({ isOpen, onClose, checkoutUrl, planLabel 
       // Opcional: armazenar em localStorage para uso futuro
       const payload = { fullName, email, phone, planLabel, ts: Date.now() };
       localStorage.setItem("lpBootcampLead", JSON.stringify(payload));
+      // Dispara webhook server-side
+      try {
+        await fetch("/api/webhook", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ fullName, email, phone, planLabel, from: "lp-bootcamp" }),
+          cache: "no-store",
+        });
+      } catch (_) {
+        // silencioso
+      }
     } catch (_) {
       // ignore
     }

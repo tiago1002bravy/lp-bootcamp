@@ -17,8 +17,6 @@ export default function CheckoutModal({ isOpen, onClose, checkoutUrl, planLabel 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [utms, setUtms] = useState<Record<string, string>>({});
 
-  if (!isOpen) return null;
-
   useEffect(() => {
     try {
       const url = new URL(window.location.href);
@@ -41,6 +39,8 @@ export default function CheckoutModal({ isOpen, onClose, checkoutUrl, planLabel 
       // ignore
     }
   }, []);
+
+  if (!isOpen) return null;
 
   function validate(): string | null {
     if (!fullName.trim()) return "Informe seu nome";

@@ -60,15 +60,28 @@ export default function CheckoutModal({ isOpen, onClose, checkoutUrl, planLabel 
     setIsSubmitting(true);
 
     try {
+      const planSlug = (() => {
+        const base = (planLabel || "")
+          .split(" - ")[0]
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+        if (!base) return "indefinido";
+        if (base.includes("basico")) return "basico";
+        if (base.includes("completo")) return "completo";
+        if (base.includes("vip")) return "vip";
+        return base.replace(/[^a-z0-9]+/g, "-");
+      })();
+      const from = `lp-bootcamp-${planSlug}`;
       // Opcional: armazenar em localStorage para uso futuro
-      const payload = { fullName, email, phone, planLabel, utms, ts: Date.now() };
+      const payload = { fullName, email, phone, planLabel, utms, from, ts: Date.now() };
       localStorage.setItem("lpBootcampLead", JSON.stringify(payload));
       // Dispara webhook server-side
       try {
         await fetch("/api/webhook", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ fullName, email, phone, planLabel, utms, from: "lp-bootcamp" }),
+          body: JSON.stringify({ fullName, email, phone, planLabel, utms, from }),
           cache: "no-store",
         });
       } catch (_) {

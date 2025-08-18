@@ -78,7 +78,21 @@ export default function CheckoutModal({ isOpen, onClose, checkoutUrl, planLabel 
       // ignore
     }
 
-    window.location.href = checkoutUrl;
+    // Redireciona para o checkout anexando UTMs à URL
+    try {
+      let urlObj: URL;
+      try {
+        urlObj = new URL(checkoutUrl);
+      } catch {
+        urlObj = new URL(checkoutUrl, window.location.href);
+      }
+      for (const [key, value] of Object.entries(utms || {})) {
+        if (value) urlObj.searchParams.set(key, value);
+      }
+      window.location.href = urlObj.toString();
+    } catch {
+      window.location.href = checkoutUrl;
+    }
   }
 
   return (
